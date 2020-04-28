@@ -25,7 +25,12 @@ from keras.callbacks import EarlyStopping
 import csv
 
 
-
+'''
+実際の論文と違う点
+1. epoch数, 収束判定
+2. 重みの初期値調整
+3. 平均化操作がない
+'''
 #ハイパーパラメーターの設定
 batch_size = 100
 original_dim = 784
