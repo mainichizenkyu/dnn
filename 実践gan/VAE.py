@@ -13,6 +13,7 @@ from keras import objectives
 from keras import metrics
 from keras.datasets import mnist
 from keras.utils import plot_model
+
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import norm
