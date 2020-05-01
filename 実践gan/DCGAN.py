@@ -147,7 +147,7 @@ def sample_images(generator, image_grid_rows = 4, image_grid_columns = 4):
     
     gen_imgs = 0.5 *gen_imgs + 0.5
     
-    fig, axs = plt.subplot(image_grid_rows, image_grid_columns, figsize = (4, 4), sharey = True, sharex = True)
+    fig, axs = plt.subplots(image_grid_rows, image_grid_columns, figsize = (4, 4), sharey = True, sharex = True)
     
     cnt = 0
     
@@ -157,9 +157,9 @@ def sample_images(generator, image_grid_rows = 4, image_grid_columns = 4):
             axs[i, j].axis('off')
             cnt += 1
             
-iterations = 20000
+iterations = 200
 batch_size = 128
-sample_interal = 1000
+sample_interal = 10
 
 train(iterations, batch_size, sample_interal)
     
