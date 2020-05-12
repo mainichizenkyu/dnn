@@ -203,7 +203,7 @@ def simple_convert_info_pi_from_theta(theta):#等確率に動く場合を考え�
 pi_0 = simple_convert_info_pi_from_theta(theta_0)
 
 
-'''
+
 
 def get_action_and_next_s(pi, s):
     direction = ["up", "right", "down", "left"]
@@ -227,16 +227,16 @@ def goal_maze(pi):
         next_s = get_action_and_next_s(pi, s)
         state_history.append(next_s)
         
-        if next_s == 8:
+        if next_s == 30:
             break
         else:
             s = next_s
             
     return state_history
 
-state_history = goal_maze(pi_0)
-print(state_history)
-print("迷路を解くのにかかったステップ数は"+str(len(state_history)-1)+"です")
+#state_history = goal_maze(pi_0)
+#print(state_history)
+#print("迷路を解くのにかかったステップ数は"+str(len(state_history)-1)+"です")
 
 def init():
     line.set_data([], [])
@@ -244,17 +244,16 @@ def init():
 
 def animate(i):
     state = state_history[i]
-    x = (state % 3) + 0.5
-    y = 2.5 - int(state / 3)
+    x = (state % 5) + 0.5
+    y = 6.5 - int(state / 5)
     line.set_data(x, y)
     return (line,)
 
 
 
-anim = animation.FuncAnimation(fig, animate, init_func=init, frames=len(state_history),interval=200,
-                               repeat=False)
-plt.show()
-anim.save("maze.gif", writer="imagemagick")
+#anim = animation.FuncAnimation(fig, animate, init_func=init, frames=len(state_history),interval=200,repeat=False)
+#plt.show()
+#anim.save("maze.gif", writer="imagemagick")
 
 
 
@@ -359,6 +358,13 @@ while is_continue:
     step.append(len(s_a_history))
     if episode > 100:
         break
+s_a_history = np.array(s_a_history)
+state_history = s_a_history[:, 0]
+anim = animation.FuncAnimation(fig, animate, init_func=init, frames=len(state_history),interval=200,
+                               repeat=False)
+plt.show()
+anim.save("maze.gif", writer="imagemagick")
+
 #収束過程の図示
 plt.figure(figsize=(12, 6))
 plt.rcParams["font.size"] = 20
@@ -603,7 +609,7 @@ print("迷路を解くのにかかったステップ数は"+str(len(state_histor
 
 
 
-'''
+
 def init():
     line.set_data([], [])
     return (line,)
@@ -621,5 +627,4 @@ anim = animation.FuncAnimation(fig, animate, init_func=init, frames=len(state_hi
                                repeat=False)
 plt.show()
 anim.save("maze.gif", writer="imagemagick")
-
 '''
